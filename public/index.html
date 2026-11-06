@@ -1,0 +1,59 @@
+<!-- public/index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>bench chat</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <aside id="sidebar">
+    <div class="brand">bench chat</div>
+    <button id="newChat" class="ghost">+ new conversation</button>
+    <nav id="chats"></nav>
+    <div class="spacer"></div>
+    <div class="field">
+      <label for="model">model</label>
+      <select id="model"></select>
+    </div>
+    <div class="field">
+      <label for="temp">temperature <b id="tempVal">0.80</b></label>
+      <input id="temp" type="range" min="0" max="1.5" step="0.05" value="0.8" />
+    </div>
+    <div class="field">
+      <label for="ctx">context <b id="ctxVal">8192</b></label>
+      <input id="ctx" type="range" min="2048" max="32768" step="2048" value="8192" />
+    </div>
+    <button id="sysBtn" class="ghost">system prompt</button>
+  </aside>
+
+  <main>
+    <header>
+      <h1 id="title">untitled</h1>
+      <span id="status">idle</span>
+    </header>
+
+    <section id="log" aria-live="polite"></section>
+
+    <form id="form">
+      <textarea id="input" rows="1" placeholder="ticket... (enter to send, shift+enter newline)"></textarea>
+      <button type="submit" id="send">send</button>
+      <button type="button" id="stop" class="ghost" hidden>stop</button>
+    </form>
+  </main>
+
+  <dialog id="sysDialog">
+    <form method="dialog">
+      <label for="sys">system prompt</label>
+      <textarea id="sys" rows="10"></textarea>
+      <div class="dialog-row">
+        <button value="reset" class="ghost" id="sysReset">reset</button>
+        <button value="save">save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/app.js"></script>
+</body>
+        </html>
